@@ -1,0 +1,10 @@
+ID
+Nombre
+Apellido
+Telefono
+Contraseña
+Confirmar contraseña
+Dirección 
+Correo
+
+

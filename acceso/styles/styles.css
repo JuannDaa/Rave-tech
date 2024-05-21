@@ -1,0 +1,209 @@
+/* Google fonts */
+
+/* Variables */
+
+/* Colores */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;1,500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+:root{
+    --primero: #9D4BFF;
+    --primero-oscuro: #23004D;
+    --primero-claro: #A49EAC;
+    --primero-brillo: #F2F2F2;
+
+    /* FONT */
+    --cuerpo-font: 'Open Sans' , sans-serif;
+    --h1: 1.5rem;
+    --normal: .938rem;
+    --pequeño: .813rem; 
+}
+@media screen and(min-width: 768px) {
+    :root{
+        --normal: 1rem;
+        --pequeño: .875rem; 
+    }
+}
+/* Base */
+*,::before,::after{
+    box-sizing: border-box;
+}
+ body{
+    font-family: 'Poppins' , sans-serif;
+    background: linear-gradient(to bottom right, #985cc0, #ae76b9);
+    margin: 0;
+    padding: 0;
+    font-family: var(--cuerpo-font);
+    font-size: var(--normal);
+    color: var(--primero-oscuro);
+ }
+ h1{
+    margin: 0;
+ }
+ a{
+    text-decoration: none;
+ }
+ img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+ }
+ /* login */
+ .login{
+    display: grid;
+    grid-template-columns: 100%;
+    height: 100vh;
+    margin-left: 1.5rem;
+    margin-right:1.5rem;
+ }
+ .contenedor{
+    display: grid;
+ }
+ .login_img{
+    justify-self: center;
+ }
+ .login_img img{
+    width: 310px;
+    margin-top: 1.5rem;
+ }
+ .login_forms{
+    position: relative;
+    height: 368px;
+ }
+ .login_registre, .login_create{
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+    background-color: var(--primero-brillo);
+    padding: 2rem 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(35,0,77,.2);
+    animation-duration: .4s;
+    animation-name: animate-login;
+ }
+ @keyframes animate-login {
+    0%{
+        transform: scale(1,1);
+    }
+    50%{
+        transform: scale(1,1,1.1);
+    }
+    100%{
+        transform: scale(1,1);
+    }
+ }
+ .login_titulo{
+    font-size: var(--h1);
+    margin-bottom: 2rem;
+ }
+ .login_box{
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: .5rem;
+    padding: 1.125rem 1rem;
+    background-color: #fff;
+    margin-top: 1rem;
+    border-radius: .5rem;
+ }
+ .login_icon{
+    font-size: 1.5rem;
+    color: var(--primero);
+ }
+ .login_input{
+    border: none;
+    outline: none;
+    font-size: var(--normal);
+    font-weight: 100;
+    color: var(--primero-oscuro);
+ }
+ .login_input::placeholder{
+    font-size: var(--normal);
+    font-family: var(--cuerpo-font);
+    color: var(--primero-claro);
+ }
+ .login_forgot{
+    display: block;
+    width: max-content;
+    margin-left: auto;
+    margin-top: .5rem;
+    font-size: var(--pequeño);
+    font-weight: 600;
+    color: var(--primero-claro);
+ }
+ .login_button{
+    display: block;
+    padding: 1rem;
+    margin: 2rem 0;
+    background-color: var(--primero);
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    border-radius: .5rem;
+    transition: .3s;
+ }
+ .login_button:hover{
+    background-color: var(--primero-oscuro);
+ }
+ .login_cuenta,.login_iniciar,.login_registro{
+    font-weight: 600;
+    font: var(--pequeño);
+ }
+ .login_cuenta{
+    color: var(--primero-oscuro);
+ }
+ .login_iniciar,.login_registro{
+    color: var(--primero);
+    cursor: pointer;
+ }
+ .block{
+    display: block;
+ }
+ .none{
+    display: none;
+ }
+ @media screen and (min-width: 576px) {
+    .login_forms{
+        width: 348px;
+        justify-self: center;
+    }
+ }
+ @media screen and (min-width: 1024px) {
+    .login{
+        height: 100vh;
+        overflow: hidden;
+    }
+    .contenedor{
+        grid-template-columns: repeat(2, max-content);
+        justify-content: center;
+        align-items: center;
+        margin-left: 10rem;
+    } 
+    .login_img{
+        display: flex;
+        width: 600px;
+        height: 588px;
+        background-color: var(--primero-brillo);
+        border-radius: 1rem;
+        padding-left: 1rem;
+    }
+    .login_img img{
+        width: 390px;
+        margin-top: 0;
+    }
+    .login_registre, .login_create{
+        left: -11rem;
+    }
+    .login_registre{
+        bottom: -2rem;
+    }
+    .login_create{
+        bottom: -5.5rem;
+    }
+ }

@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;1,500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+ #map {
+    height: 100%;
+  }
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+body {
+    font-family: 'Poppins' , sans-serif;
+    background: linear-gradient(to bottom right, #7f2ab8, #c967dd);
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.header {
+    display: flex;
+    align-items: center;
+    min-height: 80vh;
+    margin-top: 5%;
+}
+.section-content{
+    color: white;
+}
+.logo {
+    font-size: 25px;
+    color: #7270EC;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+.menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+.menu .navbar ul li{
+    position: relative;
+    float: left;
+}
+.menu .navbar ul li a {
+    font-size: 18px;
+    padding: 20px;
+    color: #FEFFFF;
+    display: block;
+}
+.menu .navbar ul li a:hover { 
+    color: #7270EC;
+}
+#menu {
+    display: none;
+}
+.menu-icono {
+    width: 25px;
+}
+.menu label {
+    cursor: pointer;
+    display: none;
+}
+.submenu {
+    position: relative;
+}
+.submenu #carrito {
+    display: none;
+}
+.submenu:hover #carrito {
+    display: block;
+    position: absolute;
+    right: 0;
+    backdrop-filter: blur(10px);
+    top: 100%;
+    z-index: 1;
+    background-color: #4E4B5076;
+    padding: 20px;
+    min-width: 400px;
+}
+.container-user{
+    display: flex;
+    vertical-align: top;
+    padding: 2rem 0;
+    justify-content: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+.table {
+    width: 100%;
+}
+th, td {
+    color: #FEFFFF;
+}
+.borrar {
+    background-color: #7270EC;
+    border-radius: 50%;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #FEFFFF;
+    font-weight: 800;
+}
+.header-content {
+    padding: 200px 0 100px 0;
+}
+.header-info {
+    display: flex;
+}
+.header-txt {
+    width: 50%;
+}
+.header-txt h1{
+    font-size: 50px;
+    color: #FEFFFF;
+    text-transform: capitalize;
+}
+.header-img {
+    width: 50%;
+    text-align: right;
+}
+.header-img img {
+    width: 50%;
+}
