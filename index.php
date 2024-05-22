@@ -40,14 +40,14 @@ if ($conection) {
                         <li><a href="#">Inicio</a></li>
                         <li><a href="#">Servicios</a></li>                        
                         <li><a href="#">Productos</a></li>                        
-                        <li><a href="#">Contacto</a></li>                        
+                        <li><a href="./nosotros.php">Contacto</a></li>                        
                     </ul>
             </nav>
             
             <div> 
                 <ul class="container-user">
                     <li>
-                        <a href="registro.php"><img src="acceso/svg/user-line.svg" id="img-registro" width="25" alt=""></a>
+                        <a href="./registro.php"><img src="acceso/svg/user-line.svg" id="img-registro" width="25" alt=""></a>
                     </li>
                     <li class="submenu">
                         <img src="acceso/svg/shopping-cart-line.svg" id="img-carrito" alt="" width="25">
@@ -131,7 +131,7 @@ if ($conection) {
                                 <img src="images/pc3.png" alt="">
                             </div>
                         </div> 
-                    </div> 
+                    </div>  
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
