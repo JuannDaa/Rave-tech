@@ -86,7 +86,6 @@ if ($conection) {
 
                                  ?>
                                 <h1><?php echo $row['nombre'];?></h1>
-                                <h3><?php echo $row['descripcion'];?></h3>
                                 <div class="prices">
                                     <p class="price-1"><?php echo number_format($row['precio'],2,'.','.');?></p>
                                     <p class="price-2">3.050.000</p>

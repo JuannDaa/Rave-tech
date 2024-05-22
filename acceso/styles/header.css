@@ -133,3 +133,9 @@ th, td {
 .header-img img {
     width: 50%;
 }
+#about-us {
+  width: 98%;
+  margin: auto;
+  padding: 20px;
+  color: #fff;
+}
