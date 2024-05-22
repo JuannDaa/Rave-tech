@@ -1,10 +1,13 @@
-ID
-Nombre
-Apellido
-Telefono
-Contraseña
-Confirmar contraseña
-Dirección 
-Correo
+Bugs que tengo en el proyecto para mi niño kevin con mucho gusto
 
+En el login y registro no he podido dar con el codigo para el registro y los crud no cargan para poder
+hacer y verificar
 
+En la parte de detalles no me deja ver la pagina mirando las caracteristicas del produdcto, cuando carga
+la parte de la pagina details me aparece el mensaje error al procesar la peticion y no puedo ver lo que voy
+haciendo para que cargue
+
+if ($id == '' || $token == ''){
+    echo 'Error al procesar la peticion';
+    exit;
+} else {
