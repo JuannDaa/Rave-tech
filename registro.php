@@ -30,11 +30,11 @@
                     </div>
 
                     <a href="#" class="login_forgot">¿Ha olvidado su contraseña?</a>
-                    <a href="#" class="login_button">Iniciar sesión</a>
+                    <input type="submit" value="Iniciar sesión" class="login_button">
 
                     <div>
                         <span class="login_cuenta">¿No tienes una cuenta?</span>
-                        <input type="submit" class="login_iniciar" id="sign_up" value="Registrarse">
+                        <span  class="login_registro" id="sign_up"> Registrarse </span>
                     </div>
 
                 </form>
@@ -69,10 +69,10 @@
 
                     <div class="login_box">
                         <img src="lock-fill.svg" alt="" width="16">
-                        <input type="password" placeholder="Dirección" name="direccion" class="login_input">
+                        <input type="text" placeholder="Dirección" name="direccion" class="login_input">
                     </div>
 
-                    <a href="#" class="login_button">Registrarse</a>
+                    <input type="submit" value="Registrarse" class="login_button">
 
                     <div>
                         <span class="login_cuenta">¿Ya tiene una cuenta?</span>

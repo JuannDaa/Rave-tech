@@ -1,5 +1,5 @@
 <?php
-require_once "conexion.php";
+require_once "../conexion.php";
 
 class crudRegistro {
     public function registrarUsuario($datos) {
@@ -13,7 +13,7 @@ class crudRegistro {
 
             $conection = conexion::conectar();
 
-            $sql = "INSERT INTO usuario (nombre, apellido, telefono, contrasena, direccion, correo) VALUES (?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO usuarios (nombre, apellido, telefono, contrasena, direccion, correo) VALUES (?, ?, ?, ?, ?, ?)";
             $sentencia = $conection->prepare($sql);
             $sentencia->bind_param('ssssss', $nombre, $apellido, $telefono, $contrasena, $direccion, $correo);
             $sentencia->execute();
