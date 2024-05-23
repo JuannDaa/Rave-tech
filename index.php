@@ -90,7 +90,7 @@ if ($conection) {
                                     <p class="price-1"><?php echo number_format($row['precio'],2,'.','.');?></p>
                                     <p class="price-2">3.050.000</p>
                                 </div>
-                                <a href="details.php?id=<?php echo $row['id'];?>&token<?php echo
+                                <a href="details.php?id=<?php echo $row['id'];?>&token=<?php echo
                                 hash_hmac('sha1',$row['id'],KEY_TOKEN);?>" class="btn-1">Información</a>
                             </div>    
                             <div class="header-img">

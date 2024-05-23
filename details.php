@@ -15,42 +15,22 @@ if ($id == '' || $token == ''){
     if ($token == $token_tmp) {
         if ($conection) {
             $sql = $conection->prepare("SELECT COUNT(id) FROM productos WHERE id = ? AND activo = 1");
-            $sql->execute([$id]);
-            if ($sql->fetchColumn() > 0) {
-                $sql = $conection->prepare("SELECT nombre, descripcion, precio, descuent(o FROM productos WHERE id = ? AND activo = 1 LIMIT 1");
-                $sql->execute([$id]);
-                $row = $sql->fetch(PDO::FETCH_ASSOC);
+            $sql->bind_param("s", $id);
+            $sql->execute();
+            $result = $sql->get_result();
+            if ($result->num_rows > 0) {
+                $sql = $conection->prepare("SELECT nombre, descripcion, precio, descuento FROM productos WHERE id = ? AND activo = 1 LIMIT 1");
+                $sql->bind_param("s", $id);
+                $sql->execute();
+                $result = $sql->get_result();
+                $row = $result->fetch_assoc();
                 if ($row) {
                     $nombre = $row['nombre'];
                     $descripcion = $row['descripcion'];
-                    $precio = $row['precio'];
-                    $descuento = $row['descuento'];
-                    $precio_desc = $precio -(($precio*$descuento)-100);
-                    $dir_images = 'images/'.$id. '/';
-
-                    $rutaImg = $dir_images . 'pc1.png';
-                    if (!file_exists($rutaImg)) {
-                        $rutaImg = 'images/descarga.png';
-                    }
-                    $images = array();
-                    $dir = dir($dir_images);
-
-                    while (($archivo = $dir->read()) !=false){
-                        if ($archivo != 'pc1.png' && stropos($archivo, 'png'||strpos($archivo, 'png'))) {
-                            $images = $dir_images.$archivo;
-                            $images[]= $dir_images.$archivo;
-                        }
-                    }
-                    $dir->close();
-                } else {
-                    echo "No se encontraron productos.";
-                    exit;
                 }
-            } else {
-                echo "Producto no encontrado o no activo.";
-                exit;
             }
-        } else {
+        }
+        else {
             echo "No se pudo establecer la conexión con la base de datos.";
             exit;
         }
