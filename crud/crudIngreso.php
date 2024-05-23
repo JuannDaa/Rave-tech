@@ -11,7 +11,7 @@
                 /* var_dump($conection); */
                 
                 /* var_dump($datos ['contrasena']); */
-                $sql = "SELECT * FROM usuario WHERE correo = ? and contrasena = ?";
+                $sql = "SELECT * FROM usuarios WHERE correo = ? and contrasena = ?";
                 $sentencia = $conection->prepare($sql);
                 $sentencia->bind_Param('ss',$datos['correo'], $datos['contrasena']);
                 $sentencia->execute();
