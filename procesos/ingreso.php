@@ -1,6 +1,6 @@
 <?php
-include './conexion.php';
-include './crud/crudIngreso.php';
+include '../conexion.php';
+include '../crud/crudIngreso.php';
 
 $crud = new crudIngreso();
 $datos = array('correo' => $_POST['correo'],

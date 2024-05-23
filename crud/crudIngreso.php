@@ -1,5 +1,5 @@
 <?php 
-    require_once "conexion.php";
+    require_once "../conexion.php";
     $conection = new conexion();
     $conection = $conection->conectar();
     class crudIngreso {
