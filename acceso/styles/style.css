@@ -18,7 +18,7 @@ body {
 .header {
     display: flex;
     align-items: center;
-    min-height: 80vh;
+    min-height: 8vh;
 }
 .swiper-slide{
     padding: 0 80px 50px 80px;

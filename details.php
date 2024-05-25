@@ -151,7 +151,7 @@ if ($id == '' || $token == ''){
      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
      crossorigin="anonymous"></script>
     <script>
-        function addProduct(id, token){
+        function addProducto(id, token){
             let url = 'procesos/carrito.php'
             let formData = new FormData ()
             formData.append('id', id)
