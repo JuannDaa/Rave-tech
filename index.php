@@ -1,6 +1,6 @@
 <?php
-require "procesos/config.php";
-require "conexion.php";
+require "./procesos/config.php";
+require "./conexion.php";
 $conection = conexion::conectar();
 
 if ($conection) {

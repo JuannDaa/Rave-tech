@@ -1,6 +1,6 @@
 <?php
-require "procesos/config.php";
-require "conexion.php";
+require "./procesos/config.php";
+require "./conexion.php";
 $conection = conexion::conectar();
 
 $id = isset($_GET['id']) ? $_GET['id'] : '';
