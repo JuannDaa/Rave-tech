@@ -4,7 +4,7 @@ require "conexion.php";
 $conection = conexion::conectar();
 
 if ($conection) {
-    $sql = $conection->prepare("SELECT id, nombre, descripcion, precio FROM productos WHERE activo=1");
+    $sql = $conection->prepare("SELECT id, nombre, descripcion, precio,descuento FROM productos WHERE activo=1");
     
     if ($sql) {
         $sql->execute();
@@ -25,6 +25,8 @@ if ($conection) {
     <title>Rave-Tech</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="acceso/styles/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <!-- #pagina.site>header+main+footer crea el div con el header, menu y footer asi con otros-->
 <!-- .header.top>.container>.wrapper.flexitem>.left+.right (Se utiliza para crear varios div con su clase prestablecidad)-->
@@ -37,7 +39,7 @@ if ($conection) {
             <label for="menu"><img src="images/menu.png" class="menu-icono" alt=""></label>
             <nav class="navbar">
                     <ul>
-                        <li><a href="#">Inicio</a></li>
+                        <li><a href="./index.php">Inicio</a></li>
                         <li><a href="#">Servicios</a></li>                        
                         <li><a href="#">Productos</a></li>                        
                         <li><a href="./nosotros.php">Contacto</a></li>                        
@@ -49,22 +51,9 @@ if ($conection) {
                     <li>
                         <a href="./registro.php"><img src="acceso/svg/user-line.svg" id="img-registro" width="25" alt=""></a>
                     </li>
-                    <li class="submenu">
-                        <img src="acceso/svg/shopping-cart-line.svg" id="img-carrito" alt="" width="25">
-                        <div id="carrito">
-                            <table id="lista-carrito">
-                                <thead>
-                                    <tr>
-                                        <th>Imagen</th>
-                                        <th>Nombre</th>
-                                        <th>Precio</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
-                            <a href="#" id="vaciar_carrito" class="btn-3">Vaciar carrito</a>
-                        </div>
+                    <li>
+                        <a href="./checkout.php"><img src="acceso/svg/shopping-cart-line.svg" 
+                        width="25" alt=""><span id="num_cart" class="badge bg-secondary"><?php echo $num_cart;?></span></a>
                     </li>
                 </ul>
             </div>
@@ -88,7 +77,7 @@ if ($conection) {
                                 <h1><?php echo $row['nombre'];?></h1>
                                 <div class="prices">
                                     <p class="price-1"><?php echo number_format($row['precio'],2,'.','.');?></p>
-                                    <p class="price-2">3.050.000</p>
+                                    <p class="price-2"><?php echo number_format($row['descuento']); ?>% De descuento</p>
                                 </div>
                                 <a href="details.php?id=<?php echo $row['id'];?>&token=<?php echo
                                 hash_hmac('sha1',$row['id'],KEY_TOKEN);?>" class="btn-1">Información</a>
@@ -99,39 +88,7 @@ if ($conection) {
                         </div> 
                     </div>
                     <?php }?>
-<!--Borrar -->
-                    <div class="swiper-slide">
-                        <div class="header-info">
-                            <div class="header-txt">
-                                <h1>Portátil ACER Nitro 5 AN515</h1>
-                                <h3>Core i5-10300H, RAM 8GB, SSD 512GB, GTX 1650 4GB, 15,6 FHD</h3>
-                                <div class="prices">
-                                    <p class="price-1">3.400.000</p>
-                                    <p class="price-2">3.200.000</p>
-                                </div>
-                                <a href="#" class="btn-1">Información</a>
-                            </div>
-                            <div class="header-img">
-                                <img src="images/pc2.png" alt="">
-                            </div>
-                        </div> 
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="header-info">
-                            <div class="header-txt">
-                                <h1>Portatil MSI GP76 Leopard</h1>
-                                <h3>Intel Core i7 11800H RAM 16GB SSD 1TB RTX 3070 8GB</h3>
-                                <div class="prices">
-                                    <p class="price-1">10,980,000</p>
-                                    <p class="price-2">10.800.000</p>
-                                </div>
-                                <a href="#" class="btn-1">Información</a>
-                            </div>
-                            <div class="header-img">
-                                <img src="images/pc3.png" alt="">
-                            </div>
-                        </div> 
-                    </div>  
+
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
@@ -160,7 +117,6 @@ if ($conection) {
                     <img src="images/ph1.png" alt="">
                 </div>
             </div>
-<!-- Esto toca borrarlo  -->
             <div class="categorie">
                 <div class="categorie-1">
                     <h3>Promo 2</h3>
@@ -367,5 +323,27 @@ if ($conection) {
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="acceso/js/scrip.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script>
+        function addProduct(id, token){
+            let url = 'procesos/carrito.php'
+            let formData = new FormData ()
+            formData.append('id', id)
+            formData.append('token', token)
+
+            fetch(url,{
+                method: 'POST',
+                body: formData,
+                mode: 'cors'
+            }).then(response => response.json())
+            .then(data=>{
+                if (data.ok) {
+                    let elemento = document.getElementById("num_cart")
+                    elemento.innerHTML = data.numero
+                }
+            })
+        }
+    </script>
+    </body>
 </html>

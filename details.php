@@ -12,6 +12,7 @@ if ($id == '' || $token == ''){
     exit;
 } else {
     $token_tmp = hash_hmac('sha1', $id, KEY_TOKEN);
+
     if ($token == $token_tmp) {
         if ($conection) {
             $sql = $conection->prepare("SELECT COUNT(id) FROM productos WHERE id = ? AND activo = 1");
@@ -27,6 +28,25 @@ if ($id == '' || $token == ''){
                 if ($row) {
                     $nombre = $row['nombre'];
                     $descripcion = $row['descripcion'];
+                    $precio = $row['precio'];
+                    $descuento = $row['descuento'];
+                    $precio_desc = $precio-(($precio*$descuento)/100);
+                    $dir_images = 'images/'.$id.'/';
+
+                    $rutaImg = $dir_images. 'pc1.png';
+                    
+                    if (!file_exists($rutaImg)) {
+                        $rutaImg = 'images/descarga.png';
+                    }
+                    $imagenes = array();
+                    $dir = dir($dir_images);
+
+                    while (($archivo = $dir->read())!=false) {
+                        if ($archivo!='pc1.png'&& (strpos($archivo, 'png')||strpos($archivo,'png'))) {
+                            $imagenes[] = $dir_images.$archivo;
+                        }
+                    }
+                    $dir-> close();
                 }
             }
         }
@@ -47,6 +67,8 @@ if ($id == '' || $token == ''){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rave-Tech</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="acceso/styles/style.css">
 </head>
@@ -59,33 +81,20 @@ if ($id == '' || $token == ''){
                 <label for="menu"><img src="images/menu.png" class="menu-icono" alt=""></label>
                 <nav class="navbar">
                     <ul>
-                        <li><a href="#">Inicio</a></li>
+                        <li><a href="./index.php">Inicio</a></li>
                         <li><a href="#">Servicios</a></li>                        
                         <li><a href="#">Productos</a></li>                        
-                        <li><a href="#">Contacto</a></li>                        
+                        <li><a href="./nosotros.php">Contacto</a></li>                     
                     </ul>
                 </nav>
                 <div> 
                     <ul class="container-user">
                         <li>
-                            <a href="registro.php"><img src="acceso/svg/user-line.svg" id="img-registro" width="25" alt=""></a>
+                            <a href="./registro.php"><img src="acceso/svg/user-line.svg" id="img-registro" width="25" alt=""></a>
                         </li>
-                        <li class="submenu">
-                            <img src="acceso/svg/shopping-cart-line.svg" id="img-carrito" alt="" width="25">
-                            <div id="carrito">
-                                <table id="lista-carrito">
-                                    <thead>
-                                        <tr>
-                                            <th>Imagen</th>
-                                            <th>Nombre</th>
-                                            <th>Precio</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody></tbody>
-                                </table>
-                                <a href="#" id="vaciar_carrito" class="btn-3">Vaciar carrito</a>
-                            </div>
+                        <li>
+                        <a href="./procesos/carrito.php"><img src="acceso/svg/shopping-cart-line.svg" 
+                        width="25" alt=""><span id="num_cart" class="badge bg-secondary"><?php echo $num_cart;?></span></a>
                         </li>
                     </ul>
                 </div>
@@ -95,45 +104,71 @@ if ($id == '' || $token == ''){
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 order-md-1">
-                        <img src="images/1/pc1.png" alt="">
+                    <div id="carouselImages" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                        <img src="<?php echo $rutaImg?>" alt="" class="d-block w-100">
+                        </div>
+                        <?php foreach ($imagenes as $img){ ?>
+                            <div class="carousel-item">
+                                <img src="<?php echo $img?>" class="d-block w-100">
+                            </div>  
+                        <?php } ?>
+                    </div>
+                    <button class="carousel-control-prev" data-bs-target="#carouselImages" type="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only"></span>
+                    </button>
+                    <button class="carousel-control-next" data-bs-target="#carouselImages" type="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only"></span>
+                    </button>
+                    </div>
                     </div>
                     <div class="col-md-6 order-md-2">
                         <h2><?php echo htmlspecialchars($nombre); ?></h2>
-                        <h2><?php echo htmlspecialchars(MONEDA . number_format($precio, 2, '.', '.')); ?></h2>
-                        <p class="lead"><?php echo htmlspecialchars($descripcion); ?></p>
+                        <?php if ($descuento > 0) { ?>
+                            <p><del><?php echo htmlspecialchars(MONEDA. number_format($precio, 2, '.', '.')); ?></del></p>
+                            <h2>
+                                <?php echo htmlspecialchars(MONEDA. number_format($precio_desc, 2, '.', '.')); ?>
+                                <small class="text-succes"><?php echo htmlspecialchars($descuento); ?>% descuento</small>
+                            </h2>
+                            <?php } else { ?>
+                           <h2><?php echo htmlspecialchars(MONEDA . number_format($precio, 2, '.', '.')); ?></h2>
+                            <?php } ?>
+
+                        <p class="lead"><?php echo $descripcion; ?></p>
+                        <div class="d-grid gap-3 col-10 mx-auto">
+                        <button class="btn-1" type="button" onclick="addProducto(<?php echo $id; ?>,'<?php echo $token_tmp; ?>')">Agregar al carrito</button>
                     </div>
-                    <div class="d-grid gap-3 col-10 mx-auto">
-                        <button class="btn-1" type="button">Agregar al carrito</button>
                     </div>
                 </div>
             </div>
         </main>
-        <footer class="footer container">
-            <div class="link">
-                <h3>Lorem</h3>
-                <ul>
-                    <li><a href="#">Lorem</a></li>
-                    <li><a href="#">Lorem</a></li>
-                    <li><a href="#">Lorem</a></li>
-                    <li><a href="#">Lorem</a></li>
-                </ul>
-            </div>
-            <div class="link">
-                <h3>Lorem</h3>
-                <ul>
-                    <li><a href="#">Lorem</a></li>
-                    <li><a href="#">Lorem</a></li>
-                    <li><a href="#">Lorem</a></li>
-                    <li><a href="#">Lorem</a></li>
-                </ul>
-            </div>
-            <div class="link">
-                <h3>Lorem</h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-            </div>
-        </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-    <script src="acceso/js/scrip.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
+     crossorigin="anonymous"></script>
+    <script>
+        function addProduct(id, token){
+            let url = 'procesos/carrito.php'
+            let formData = new FormData ()
+            formData.append('id', id)
+            formData.append('token', token)
+
+            fetch(url,{
+                method: 'POST',
+                body: formData,
+                mode: 'cors'
+            }).then(response => response.json())
+            .then(data=>{
+                if (data.ok) {
+                    let elemento = document.getElementById("num_cart")
+                    elemento.innerHTML = data.numero
+                }
+            })
+        }
+    </script>
 </body>
 </html>

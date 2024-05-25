@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-05-2024 a las 14:48:49
+-- Tiempo de generación: 25-05-2024 a las 21:41:14
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `productos` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(200) NOT NULL,
-  `descripcion` text NOT NULL,
+  `nombre` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `precio` int(100) NOT NULL,
   `descuento` tinyint(3) NOT NULL DEFAULT 0,
   `id_categoria` int(11) NOT NULL,
@@ -42,9 +42,9 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `descuento`, `id_categoria`, `activo`) VALUES
-(1, 'Portátil Gamer ASUS TUF FX506L', 'Core i5 10300H RAM 8GB GTX 1650 SSD 512GB', 3200000, 0, 1, 1),
-(2, 'Portátil ACER Nitro 5 AN515', 'Core i5-10300H, RAM 8GB, SSD 512GB, GTX 1650 4GB, 15,6 FHD', 3400000, 0, 1, 1),
-(3, 'Portatil MSI GP76 Leopard', 'Intel Core i7 11800H RAM 16GB SSD 1TB RTX 3070 8GB', 10980000, 0, 1, 1);
+(1, 'Portátil Gamer ASUS TUF FX506L', '<b>Caracteristicas:</b><br>\r\n<ul>\r\n<li>Procesador Intel Core i5 10300H</li>\r\n<li>Tarjeta de Video: GTX 1650 4GB</li>\r\n<li>Memoria RAM: 8GB DDR4</li>\r\n<li>Almacenamiento 1: SSD 512GB PCIe NVME</li>\r\n<li>Pantalla de 15,6\" FHD 144Hz</li>\r\n<li>Teclado: Latinoamericano</li>\r\n</ul>', 3200000, 10, 1, 1),
+(2, 'Portátil ACER Nitro 5 AN515', '<b>Caracteristicas:</b><br>\n<ul>\n<li>Procesador: Intel Core i5-10300H</li>\n<li>Tarjeta de Video: GTX 1650 4GB</li>\n<li>Memoria RAM: 8GB DDR4</li>\n<li>Almacenamiento 1: SSD 512GB PCIe NVME</li>\n<li>Pantalla: 15,6\" FHD</li>\n<li>Teclado: Latinoamericano</li>\n<li>Software: SO Windows 10 Home Single</li>\n</ul>', 3400000, 12, 1, 1),
+(3, 'Portatil MSI GP76 Leopard', '<b>Caracteristicas:</b><br>\r\n<ul>\r\n<li>Procesador: Intel Core i7 11800H</li>\r\n<li>Tarjeta de Video: RXT 3070 8GB</li>\r\n<li>Memoria RAM: 16GB (8GB*2) DDR4</li>\r\n<li>Almacenamiento: 1 TBSSD</li>\r\n<li>Pantalla: Panel Led 17.3 FHD anti-glare, IPS – level, 240hz</li>\r\n<li>Teclado: Latinoamericano</li>\r\n</ul>', 10980000, 5, 1, 1);
 
 -- --------------------------------------------------------
 

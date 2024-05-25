@@ -1,11 +1,10 @@
 Bugs que tengo en el proyecto para mi niño kevin con mucho gusto
 
+<<<<<<< Updated upstream
+=======
+En el details no me deja agregar al carrito y 
+si me puedes ayudar con el css para que no se vea ese espacio tan feo que queda
+>>>>>>> Stashed changes
 
-En la parte de detalles no me deja ver la pagina mirando las caracteristicas del produdcto, cuando carga
-la parte de la pagina details me aparece el mensaje error al procesar la peticion y no puedo ver lo que voy
-haciendo para que cargue
+Y en el checkout no me deja ver la tabla me imagino que por los errores del details 
 
-if ($id == '' || $token == ''){
-    echo 'Error al procesar la peticion';
-    exit;
-} else {
