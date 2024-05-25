@@ -8,8 +8,8 @@
     list-style: none;
 }
 
- #map {
-    height: 100%;
+ #map--container {
+    height: 300px;
   }
   html,
   body {

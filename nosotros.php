@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="acceso/styles/header.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/79e6024c63.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> 
 </head>
 
 <body>
@@ -60,19 +63,12 @@
     </section>
 </header>
 <div id="map">
-  <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1Ctvb6IeJ7JD0mn4lUinXxzlldArR1b0&callback=initMap">
-</script>
-<script>
-  const mapDiv = document.getElementById("map");
-  let map;
-  function initMap() {
-    map = new google.maps.Map (mapDiv,{
-      center:{lat:4.576649009457444, lng: -74.22413716301091},
-      zoom:8,
-    });
-  }
-</script>
-</div> 
+    <div id="map--container"></div>
+</div>
+<footer>
+
+</footer>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="./acceso/js/script_mapa.js"></script> 
 </body>
 </html>
