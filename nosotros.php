@@ -18,10 +18,10 @@
         <label for="menu"><img src="images/menu.png" class="menu-icono" alt=""></label>
         <nav class="navbar">
                 <ul>
-                    <li><a href="#">Inicio</a></li>
+                    <li><a href="./index.php">Inicio</a></li>
                     <li><a href="#">Servicios</a></li>                        
                     <li><a href="#">Productos</a></li>                        
-                    <li><a href="#">Contacto</a></li>                        
+                    <li><a href="./nosotros.php">Contacto</a></li>                        
                 </ul>
         </nav>
         <div> 
