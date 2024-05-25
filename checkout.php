@@ -1,6 +1,6 @@
 <?php
-require "procesos/config.php";
-require "conexion.php";
+require "./procesos/config.php";
+require "./conexion.php";
 $conection = conexion::conectar();
 
 $productos = isset($_SESSION['carrito']['productos'])? $_SESSION['carrito']['productos']:null;

@@ -1,6 +1,6 @@
 <?php
 
-    require '..procesos/config.php';
+require "./procesos/config.php";
 
     if (isset($_POST['id'])) {
         $id = $_POST['id'];
