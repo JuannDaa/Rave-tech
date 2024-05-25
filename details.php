@@ -152,7 +152,7 @@ if ($id == '' || $token == ''){
      crossorigin="anonymous"></script>
     <script>
         function addProducto(id, token){
-            let url = 'procesos/carrito.php'
+            let url = '../procesos/carrito.php'
             let formData = new FormData ()
             formData.append('id', id)
             formData.append('token', token)
