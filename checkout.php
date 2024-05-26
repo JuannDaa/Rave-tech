@@ -5,11 +5,14 @@ $conection = conexion::conectar();
 
 $productos = isset($_SESSION['carrito']['productos'])? $_SESSION['carrito']['productos']:null;
 
-print_r($_SESSION);
+$sql = $conection->prepare("SELECT * FROM productos WHERE id = ?");
+
 if ($productos != null) {
-    foreach ($productos as $clave => $cantidad) {
-                $sql->execute();
-        $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
+    foreach ($productos as $id_producto => $cantidad) {
+        $sql->bind_param('i', $id_producto);
+        $sql->execute();
+        $result = $sql->get_result();
+        $lista_carrito[] = $result->fetch_assoc();
     }
 }
 
