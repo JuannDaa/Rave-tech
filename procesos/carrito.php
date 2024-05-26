@@ -20,8 +20,11 @@ require "../procesos/config.php";
         }else {
             $datos['ok']=false;
         }
-    }else {
+    }else { 
         $datos['ok'] = false;
     }
     echo json_encode($datos);
+    // Redirigir al usuario a la página de checkout
+    header('Location:../checkout.php');
+    exit;
 ?>
