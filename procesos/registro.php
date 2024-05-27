@@ -14,12 +14,10 @@ $crud = new crudIngreso();
         'direccion' => $_POST['direccion']
     );
     $resultado = $crud->registrarUsuario($datos);
-if ($resultado->num_rows > 0){
-    echo 
-    '<script>window,location.href="./index.php; alert("Registro exitoso");</script>';
-}else{
-    echo
-    '<script>window,location.href="./registro.php"; alert("Error de registro");</script>';
-}
+    if ($resultado){
+        echo '<script>window.location.href="../index.php"; alert("Registro exitoso");</script>';
+    }else{
+        echo '<script>window.location.href="./registro.php"; alert("Error de registro");</script>';
+    }
 ?>
 
