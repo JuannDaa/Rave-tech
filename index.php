@@ -100,6 +100,8 @@ if ($conection) {
     </header>
         <!-- Header -->
         <!-- main (Menu) -->
+
+    <!-- 
        <section class="promos container" id="lista-1">
         <h2>Promociones</h2>
         <div class="categories">
@@ -163,11 +165,11 @@ if ($conection) {
         </div>
 
        </section>
-
+-->
        <hr>
 
+<!--
        <section class="products container" id="lista-2">
-
         <h2>Nuevos Productos</h2>
             <div class="swiper mySwiper-2">
                 <div class="swiper-wrapper">
@@ -220,16 +222,17 @@ if ($conection) {
                 <div class="swiper-button-prev"></div>
             </div>
 
-       </section>
+        </section>
+    -->
        <hr>
        <section class="products container" id="lista-3">
-
-        <h2>Productos</h2>
-            <div class="swiper mySwiper-2">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="product">
-                            <img src="images/ph9.png" alt="">
+           
+           <h2>Productos</h2>
+           <div class="swiper mySwiper-2">
+               <div class="swiper-wrapper">
+                   <div class="swiper-slide">
+                       <div class="product">
+                           <img src="images/ph9.png" alt="">
                             <div class="product-txt">
                                 <h3>Chasis XPG</h3>
                                 <p>Battlecruiser</p>
