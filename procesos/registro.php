@@ -16,7 +16,7 @@ $crud = new crudIngreso();
     $resultado = $crud->registrarUsuario($datos);
 if ($resultado->num_rows > 0){
     echo 
-    '<script>window,location.href="archivodondevadespuesdeiniciar(../ingrese.php); alert("Registro exitoso");</script>';
+    '<script>window,location.href="./index.php; alert("Registro exitoso");</script>';
 }else{
     echo
     '<script>window,location.href="./registro.php"; alert("Error de registro");</script>';
